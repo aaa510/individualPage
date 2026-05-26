@@ -1,0 +1,1178 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>安杨可欣的个人主页</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="页面导航">
+      <button class="music-toggle is-playing" id="musicToggle" type="button" aria-label="关闭背景音乐">
+        <span class="speaker-emoji" aria-hidden="true">🔊</span>
+      </button>
+      <nav class="nav-links">
+        <a href="#profile">个人情况</a>
+        <a href="#campus">校园经历</a>
+        <a href="#internship">实习经历</a>
+        <a href="#projects">项目经历</a>
+        <a href="#honors">荣誉奖项</a>
+      </nav>
+    </header>
+
+    <audio id="bgMusic" loop preload="auto" autoplay>
+      <source src="source/spring.mp3" type="audio/mpeg" />
+      当前浏览器不支持音频播放。
+    </audio>
+
+    <main class="snap-pages">
+      <section class="page profile-page" id="profile" aria-labelledby="profileTitle">
+      <div class="cloud-layer" aria-hidden="true">
+        <div class="pixel-cloud cloud-one"></div>
+        <div class="pixel-cloud cloud-two"></div>
+        <div class="pixel-cloud cloud-three"></div>
+      </div>
+
+        <div class="profile-shell">
+        <div class="profile-layout">
+          <div class="profile-card">
+            <div class="avatar-wrap" aria-label="像素风头像占位">
+              <div class="pixel-avatar" aria-hidden="true">
+                <span class="hair hair-left"></span>
+                <span class="hair hair-right"></span>
+                <span class="face"></span>
+                <span class="eye eye-left"></span>
+                <span class="eye eye-right"></span>
+                <span class="blush blush-left"></span>
+                <span class="blush blush-right"></span>
+                <span class="smile"></span>
+              </div>
+            </div>
+            <p class="badge">Personal Homepage</p>
+            <h1 id="profileTitle">
+              <span class="title-name">安杨可欣</span>
+              <span class="title-tail">的个人主页</span>
+            </h1>
+            <p class="intro">
+              你好，我是安杨可欣。这里会展示我的个人情况、校园经历、实习经历和荣誉奖项。当前先完成个人主页的整体框架，后续可以继续填充真实内容与作品链接。
+            </p>
+            <div class="profile-tags" aria-label="个人关键词">
+              <span>传奇耐面王</span>
+              <span>offer乞讨者</span>
+              <span>大厂孝子</span>
+              <span>打不死的小强</span>
+            </div>
+          </div>
+
+          <div class="info-panel" aria-label="个人情况详情">
+            <div class="panel-title">
+              <span class="pixel-heart" aria-hidden="true"></span>
+              <h1>个人情况</h1>
+            </div>
+            <dl class="info-list">
+              <div>
+                <dt>姓名</dt>
+                <dd>安杨可欣</dd>
+              </div>
+              <div>
+                <dt>出生年月</dt>
+                <dd>2001.05</dd>
+              </div>
+              <div>
+                <dt>出生地</dt>
+                <dd>黑龙江省哈尔滨市</dd>
+              </div>
+              <div>
+                <dt>主要内容</dt>
+                <dd>个人情况、校园经历、实习经历、荣誉奖项</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="trait-grid" aria-label="个人属性卡片">
+            <article class="trait-card mbti-card" tabindex="0">
+              <img class="trait-image" src="img/intj.png" alt="INTJ 人格插图" />
+              <div class="trait-copy">
+                <p>我的MBTI</p>
+                <strong>INTJ</strong>
+                <span class="trait-desc">于混沌中构建秩序，于独处中积蓄深度。</span>
+              </div>
+            </article>
+            <article class="trait-card mbti-card" tabindex="0">
+              <img class="trait-image" src="img/monk.png" alt="MONK 人格插图" />
+              <div class="trait-copy">
+                <p>我的SBTI</p>
+                <strong>MONK</strong>
+                <span class="trait-desc">没有那种世俗的欲望。</span>
+              </div>
+            </article>
+            <article class="trait-card mbti-card" tabindex="0">
+              <img class="trait-image" src="img/Taurus.png" alt="金牛 人格插图" />
+              <div class="trait-copy">
+                <p>我的星座</p>
+                <strong>金牛座</strong>
+                <span class="trait-desc">稳定、踏实、耐心，适合长期投入工作和生活目标</span>
+              </div>
+            </article>
+            <article class="trait-card mbti-card" tabindex="0">
+              <img class="trait-image" src="img/AB.png" alt="血型 人格插图" />
+              <div class="trait-copy">
+                <p>我的血型</p>
+                <strong>AB型</strong>
+                <span class="trait-desc">AB型人的免疫功能以及对环境和适应能力是四种血型中最好</span>
+              </div>
+            </article>
+            <article class="trait-card mbti-card" tabindex="0">
+              <img class="trait-image" src="img/ravenklauw.png" alt="哈利波特 人格插图" />
+              <div class="trait-copy">
+                <p>分院帽</p>
+                <strong>拉文克劳</strong>
+                <span class="trait-desc">如果你头脑精明，你也许属于智慧的拉文克劳，那些睿智博学的人，总会在那里遇见他们的同道</span>
+              </div>
+            </article>
+            <article class="trait-card">
+              <span class="trait-icon trait-relation" aria-hidden="true"></span>
+              <p><span>看看我是否适合这份工作吧💕</span></p>
+              <button class="trait-action" type="button" data-open-job-modal>开始测试</button>
+            </article>
+          </div>
+        </div>
+        </div>
+      </section>
+
+      <section class="page campus-page" id="campus" aria-labelledby="campusTitle">
+        <canvas class="campus-petals" id="campusPetals" aria-hidden="true"></canvas>
+        <div class="section-shell campus-shell">
+          <div class="campus-heading">
+            <div>
+              <p class="section-kicker">Chapter 02</p>
+              <h2 id="campusTitle">校园经历</h2>
+            </div>
+          </div>
+
+          <div class="campus-layout">
+            <div class="campus-timeline" aria-label="教育与校园经历时间线">
+              <article class="timeline-card">
+                <span class="timeline-date">
+                  <b>2019 / 08</b>
+                  <i>至</i>
+                  <b>2023 / 07</b>
+                </span>
+                <h3>哈尔滨工业大学｜工业工程（本科）</h3>
+                <p>系统学习运筹优化、生产系统、质量管理、项目管理、决策分析和数据库系统，建立工程管理与数据分析结合的能力基础。</p>
+                <a class="grade-download" href="source/grade.png" download="安杨可欣-本科成绩.png" aria-label="下载本科课程成绩截图">
+                  <span class="grade-download__icon" aria-hidden="true"></span>
+                  <span>下载本科成绩</span>
+                </a>
+              </article>
+              <article class="timeline-card timeline-card--feature">
+                <span class="timeline-date">
+                  <b>2023 / 08</b>
+                  <i>至</i>
+                  <b>2024 / 07</b>
+                </span>
+                <h3>哈工大研究生支教团｜尉犁县第一中学教师</h3>
+                <p>担任 2 个班级生物教师，所带班级成绩位列年级前列；兼任趣味数学社团教师，参与校园第二课堂建设，获评优秀志愿者。</p>
+              </article>
+              <article class="timeline-card">
+                <span class="timeline-date">
+                  <b>2024 / 08</b>
+                  <i>至今</i>
+                </span>
+                <h3>哈尔滨工业大学｜机械（推免硕士）</h3>
+                <p>继续深耕机械工程方向，课程覆盖传感技术、数值分析、机器人技术和工程伦理，强化工程问题建模与系统理解能力。</p>
+                <a class="grade-download" href="source/master_grade.png" download="安杨可欣-硕士成绩.png" aria-label="下载硕士课程成绩截图">
+                  <span class="grade-download__icon" aria-hidden="true"></span>
+                  <span>下载硕士成绩</span>
+                </a>
+              </article>
+            </div>
+
+            <aside class="campus-scoreboard" aria-label="课程成绩与能力概览">
+              <div class="scoreboard-card campus-sticker-card">
+                <div>
+                  <span class="score-label">学习地图</span>
+                  <h3>工程、教学与组织服务并行</h3>
+                  <p>用工程训练打底，用支教经历拓宽表达与协作场景，再通过学生工作持续参与集体建设。</p>
+                </div>
+              </div>
+              <div class="score-card-grid">
+                <article>
+                  <span>本科成绩（前36%）</span>
+                  <strong>84.93</strong>
+                  <p>生产系统仿真、项目管理、决策分析、数据库系统。</p>
+                </article>
+                <article>
+                  <span>硕士成绩（前38%）</span>
+                  <strong>83.85</strong>
+                  <p>传感技术，并持续学习数值分析、机器人技术等课程。</p>
+                </article>
+              </div>
+              <article class="student-work-card">
+                <span class="student-work-label">学生工作</span>
+                <div class="student-work-title">
+                  <strong>党支书</strong>
+                  <time datetime="2025-10">2025.10—至今</time>
+                </div>
+                <p>承担党支部日常组织、沟通协调与活动推进工作，持续参与学生服务与集体建设。</p>
+              </article>
+              <div class="campus-tags" aria-label="校园能力标签">
+                <span>工业工程</span>
+                <span>数据分析</span>
+                <span>智能制造</span>
+                <span>项目管理</span>
+                <span>支教经历</span>
+                <span>团队领导力</span>
+                <span>教学表达</span>
+                <span>数模竞赛</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="page internship-page" id="internship" aria-labelledby="internshipTitle">
+        <canvas class="internship-stars" id="internshipStars" aria-hidden="true"></canvas>
+        <div class="flower-container" id="flowerContainer" aria-hidden="true"></div>
+        <div class="section-shell internship-shell">
+          <div class="internship-heading">
+            <div>
+              <p class="section-kicker">Chapter 04</p>
+              <h2 id="internshipTitle">实习经历</h2>
+            </div>
+          </div>
+
+          <div class="intern-cards-grid" aria-label="实习经历卡片">
+            <article class="intern-card intern-card--hesai">
+              <div class="intern-card__header">
+                <span class="intern-card__icon intern-card__icon--hesai" aria-hidden="true"></span>
+                <span class="intern-card__badge">2025.05 - 2025.08</span>
+              </div>
+              <h3>上海禾赛科技有限公司</h3>
+              <p class="intern-card__role">信息化部 · 信息化系统咨询顾问</p>
+              <div class="intern-card__divider" aria-hidden="true"></div>
+              <ul class="intern-card__duties">
+                <li>ALM系统Polarion运维与用户答疑，完成工作项与工作流配置</li>
+                <li>JS脚本实现工作项联动及变更次数统计</li>
+                <li>SQL查询搭建BI数据看板</li>
+                <li>PDF格式归一化处理，Python脚本+Word宏提升导入效率</li>
+                <li>推广AI生成测试用例及需求评审功能</li>
+              </ul>
+              <div class="intern-card__tags">
+                <span>Polarion</span>
+                <span>JavaScript</span>
+                <span>SQL</span>
+                <span>项目管理工具</span>
+              </div>
+            </article>
+
+            <article class="intern-card intern-card--jd intern-card--feature">
+              <div class="intern-card__header">
+                <span class="intern-card__icon intern-card__icon--jd" aria-hidden="true"></span>
+                <span class="intern-card__badge">2025.12 - 2026.02</span>
+              </div>
+              <h3>京东零售</h3>
+              <p class="intern-card__role">Y事业部·供应链质量组·测试开发</p>
+              <div class="intern-card__divider" aria-hidden="true"></div>
+              <ul class="intern-card__duties">
+                <li>行业研究品类规划模块功能测试，SQL数据校验</li>
+                <li>AI分析助手与Agent算法链路接口测试</li>
+                <li>消息队列MQ测试，验证消息收发流程</li>
+                <li>完整测试周期覆盖，用例设计90+条</li>
+                <li>发现缺陷30+个，保障功能交付质量</li>
+              </ul>
+              <div class="intern-card__tags">
+                <span>接口测试</span>
+                <span>SQL</span>
+                <span>用例设计</span>
+                <span>Agent测试</span>
+              </div>
+            </article>
+
+            <article class="intern-card intern-card--hikvision">
+              <div class="intern-card__header">
+                <span class="intern-card__icon intern-card__icon--hik" aria-hidden="true"></span>
+                <span class="intern-card__badge">2026.03 - 至今</span>
+              </div>
+              <h3>海康威视</h3>
+              <p class="intern-card__role">海康机器人 · 项目管理</p>
+              <div class="intern-card__divider" aria-hidden="true"></div>
+              <ul class="intern-card__duties">
+                <li>项目进度跟踪与资源协调</li>
+                <li>风险管控与问题推动解决</li>
+                <li>推动项目高效交付</li>
+              </ul>
+              <div class="intern-card__tags">
+                <span>项目管理</span>
+                <span>进度跟踪</span>
+                <span>团队协作</span>
+                <span>沟通协调</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="growth-path" aria-label="职业成长路径">
+            <div class="growth-path__title">我的成长路径</div>
+            <div class="growth-path__nodes">
+              <div class="growth-node growth-node--hesai">
+                <div class="growth-node__icon">
+                  <img src="img/svg/pc.svg" alt="系统落地" />
+                </div>
+                <div class="growth-node__content">
+                  <div class="growth-node__label">系统落地</div>
+                  <div class="growth-node__desc">从0到1配置系统<br>学习业务需求</div>
+                </div>
+              </div>
+              
+              <div class="growth-node__arrow"></div>
+              
+              <div class="growth-node growth-node--jd">
+                <div class="growth-node__icon">
+                  <img src="img/svg/bug.svg" alt="质量保障" />
+                </div>
+                <div class="growth-node__content">
+                  <div class="growth-node__label">质量保障</div>
+                  <div class="growth-node__desc">深入技术细节<br>保障产品质量</div>
+                </div>
+              </div>
+              
+              <div class="growth-node__arrow"></div>
+              
+              <div class="growth-node growth-node--hik">
+                <div class="growth-node__icon">
+                  <img src="img/svg/people-carry.svg" alt="项目交付" />
+                </div>
+                <div class="growth-node__content">
+                  <div class="growth-node__label">项目交付</div>
+                  <div class="growth-node__desc">统筹全局资源<br>推动目标达成</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page projects-page" id="projects" aria-labelledby="projectsTitle">
+        <div class="butterfly-deco butterfly-deco-1" aria-hidden="true"></div>
+        <div class="butterfly-deco butterfly-deco-2" aria-hidden="true"></div>
+        <div class="butterfly-deco butterfly-deco-3" aria-hidden="true"></div>
+        <div class="butterfly-deco butterfly-deco-4" aria-hidden="true"></div>
+        <div class="butterfly-deco butterfly-deco-5" aria-hidden="true"></div>
+        <div class="butterfly-deco butterfly-deco-6" aria-hidden="true"></div>
+        <div class="butterfly-deco butterfly-deco-7" aria-hidden="true"></div>
+        <div class="section-shell projects-shell">
+          <div class="projects-heading">
+            <div>
+              <p class="section-kicker">Chapter 04</p>
+              <h2 id="projectsTitle">项目经历</h2>
+            </div>
+          </div>
+
+          <div class="projects-grid" aria-label="项目经历卡片">
+            <article class="project-card" data-project="1">
+              <div class="project-card__header">
+                <span class="project-card__badge">2022.10-2023.06</span>
+                <span class="project-card__type">企业项目</span>
+              </div>
+              <h3>电机产品合同管理信息系统</h3>
+              <p class="project-card__desc">开发B/S架构的销售合同管理系统，覆盖全生命周期管理。</p>
+              <div class="project-card__tech">
+                <span>Spring Boot</span>
+                <span>Vue 2.0</span>
+                <span>MyBatis-Plus</span>
+              </div>
+              <button class="project-card__expand" data-project-id="1">查看详细</button>
+            </article>
+
+            <article class="project-card" data-project="2">
+              <div class="project-card__header">
+                <span class="project-card__badge">2024.10-2024.12</span>
+                <span class="project-card__type">个人项目</span>
+              </div>
+              <h3>YOLOv5目标检测训练工具</h3>
+              <p class="project-card__desc">可视化深度学习训练工具，支持数据集管理与训练监控。</p>
+              <div class="project-card__tech">
+                <span>PyTorch</span>
+                <span>YOLOv5</span>
+                <span>PyQt5</span>
+              </div>
+              <button class="project-card__expand" data-project-id="2">查看详细</button>
+            </article>
+
+            <article class="project-card" data-project="3">
+              <div class="project-card__header">
+                <span class="project-card__badge">2025.03-2025.08</span>
+                <span class="project-card__type">科研项目</span>
+              </div>
+              <h3>基于MMpose的人员异常检测</h3>
+              <p class="project-card__desc">基于人体姿态识别的智能监控系统，实时检测异常行为。</p>
+              <div class="project-card__tech">
+                <span>MMPose</span>
+                <span>LSTM</span>
+                <span>PyTorch</span>
+              </div>
+              <button class="project-card__expand" data-project-id="3">查看详细</button>
+            </article>
+            <article class="project-card" data-project="4">
+              <div class="project-card__header">
+                <span class="project-card__badge">2025.07-至今</span>
+                <span class="project-card__type">科研项目</span>
+              </div>
+              <h3>面向对抗过程的视频摘要与图像描述方法研究</h3>
+              <p class="project-card__desc">面向智慧文旅，自动生成运动场景的关键帧与图像描述内容。</p>
+              <div class="project-card__tech">
+                <span>光流法</span>
+                <span>DeblurMaster</span>
+                <span>Coze</span>
+              </div>
+              <button class="project-card__expand" data-project-id="4">查看详细</button>
+            </article>
+
+            <article class="project-card" data-project="5">
+              <div class="project-card__header">
+                <span class="project-card__badge">2025.03-2025.04</span>
+                <span class="project-card__type">个人项目</span>
+              </div>
+              <h3>基于Coze工作流的智能简历生成工具</h3>
+              <p class="project-card__desc">自动化简历生成工作流，多格式输入，一键生成在线简历。</p>
+              <div class="project-card__tech">
+                <span>Coze</span>
+                <span>LLM</span>
+                <span>工作流</span>
+              </div>
+              <button class="project-card__expand" data-project-id="5">查看详细</button>
+            </article>
+            <article class="project-card">
+              <h3>📊 能力雷达图</h3>
+              <div class="radar-chart">
+                <svg viewBox="0 0 260 260" style="width:100%;height:auto;max-width:185px;margin:0 auto;display:block;">
+                  <polygon points="130,25 220,77 220,183 130,235 40,183 40,77" fill="none" stroke="#dbe4f0" stroke-width="1.5"/>
+                  <polygon points="130,55 194,92 194,168 130,205 66,168 66,92" fill="none" stroke="#dbe4f0" stroke-width="1"/>
+                  <polygon points="130,85 168,107 168,153 130,175 92,153 92,107" fill="none" stroke="#dbe4f0" stroke-width="0.8"/>
+                  <line x1="130" y1="130" x2="130" y2="25" stroke="#dbe4f0"/>
+                  <line x1="130" y1="130" x2="220" y2="77" stroke="#dbe4f0"/>
+                  <line x1="130" y1="130" x2="220" y2="183" stroke="#dbe4f0"/>
+                  <line x1="130" y1="130" x2="130" y2="235" stroke="#dbe4f0"/>
+                  <line x1="130" y1="130" x2="40" y2="183" stroke="#dbe4f0"/>
+                  <line x1="130" y1="130" x2="40" y2="77" stroke="#dbe4f0"/>
+                  <polygon points="130,33 206,85 203,173 130,216 49,177 58,88" fill="rgba(96,165,250,0.30)" stroke="#3b82f6" stroke-width="3" stroke-linejoin="round"/>
+                  <circle cx="130" cy="33" r="4.5" fill="#3b82f6" stroke="#fff" stroke-width="1.5"/>
+                  <circle cx="206" cy="85" r="4.5" fill="#3b82f6" stroke="#fff" stroke-width="1.5"/>
+                  <circle cx="203" cy="173" r="4.5" fill="#3b82f6" stroke="#fff" stroke-width="1.5"/>
+                  <circle cx="130" cy="216" r="4.5" fill="#3b82f6" stroke="#fff" stroke-width="1.5"/>
+                  <circle cx="49" cy="177" r="4.5" fill="#3b82f6" stroke="#fff" stroke-width="1.5"/>
+                  <circle cx="58" cy="88" r="4.5" fill="#3b82f6" stroke="#fff" stroke-width="1.5"/>
+                  <text x="130" y="14" text-anchor="middle" font-size="12" fill="#1e293b" font-weight="700">AI / CV</text>
+                  <text x="236" y="74" text-anchor="middle" font-size="12" fill="#1e293b" font-weight="700">工程开发</text>
+                  <text x="236" y="188" text-anchor="middle" font-size="12" fill="#1e293b" font-weight="700">算法设计</text>
+                  <text x="130" y="255" text-anchor="middle" font-size="12" fill="#1e293b" font-weight="700">产品实现</text>
+                  <text x="20" y="188" text-anchor="middle" font-size="12" fill="#1e293b" font-weight="700">AI工具</text>
+                  <text x="28" y="74" text-anchor="middle" font-size="12" fill="#1e293b" font-weight="700">项目推进</text>
+                </svg>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <div class="project-modal" id="projectModal" aria-hidden="true">
+        <div class="modal-overlay" data-modal-close></div>
+        <div class="modal-content">
+          <button class="modal-close" data-modal-close>
+            <svg viewBox="0 0 24 24" width="20" height="20">
+              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" fill="currentColor"/>
+            </svg>
+          </button>
+          <div class="modal-header">
+            <span class="modal-badge" id="modalBadge"></span>
+            <span class="modal-type" id="modalType"></span>
+          </div>
+          <h3 id="modalTitle"></h3>
+          <div class="modal-body">
+            <div class="modal-section">
+              <h4>项目背景</h4>
+              <p id="modalBackground"></p>
+            </div>
+            <div class="modal-section">
+              <h4>项目职责</h4>
+              <p id="modalRole"></p>
+            </div>
+            <div class="modal-section">
+              <h4>项目内容</h4>
+              <p id="modalContent"></p>
+            </div>
+          </div>
+          <div class="modal-tags" id="modalTags"></div>
+        </div>
+      </div>
+
+      <section class="page honors-page" id="honors" aria-labelledby="honorsTitle">
+        <div class="honors-sparkle honors-sparkle-1"></div>
+        <div class="honors-sparkle honors-sparkle-2"></div>
+        <div class="honors-sparkle honors-sparkle-3"></div>
+        <div class="honors-sparkle honors-sparkle-4"></div>
+        <div class="honors-sparkle honors-sparkle-5"></div>
+        <div class="honors-sparkle honors-sparkle-6"></div>
+        <div class="honors-sparkle honors-sparkle-7"></div>
+        <div class="honors-sparkle honors-sparkle-8"></div>
+        <div class="section-shell honors-shell">
+          <div class="honors-heading">
+            <div>
+              <p class="section-kicker">Chapter 05</p>
+              <h2 id="honorsTitle">荣誉奖项</h2>
+            </div>
+          </div>
+
+          <div class="honors-layout">
+            <div class="honors-column honors-column--left">
+              <article class="honor-card honor-card--competition">
+                <div class="honor-card__header">
+                  <span class="honor-card__icon honor-card__icon--trophy">🏆</span>
+                  <h3 class="honor-card__title">竞赛能力</h3>
+                </div>
+                <ul class="honor-awards-list">
+                  <li class="honor-award-item honor-award-item--national">
+                    <div class="honor-award-badge honor-award-badge--national">国家级</div>
+                    <div class="honor-award-content">
+                      <strong>"华为杯"中国研究生数学建模竞赛国家二等奖</strong>
+                      <span class="honor-award-meta">第22届</span>
+                    </div>
+                  </li>
+                  <li class="honor-award-item honor-award-item--national">
+                    <div class="honor-award-badge honor-award-badge--national">国家级</div>
+                    <div class="honor-award-content">
+                      <strong>"华为杯"中国研究生数学建模竞赛国家三等奖</strong>
+                      <span class="honor-award-meta">第21届</span>
+                    </div>
+                  </li>
+                  <li class="honor-award-item honor-award-item--provincial">
+                    <div class="honor-award-badge honor-award-badge--provincial">省级</div>
+                    <div class="honor-award-content">
+                      <strong>"挑战杯"省级三等奖</strong>
+                    </div>
+                  </li>
+                </ul>
+              </article>
+
+              <article class="honor-card honor-card--scholarship">
+                <div class="honor-card__header">
+                  <span class="honor-card__icon honor-card__icon--scholarship">🎓</span>
+                  <h3 class="honor-card__title">奖学金及荣誉</h3>
+                </div>
+                <div class="honor-tags-grid">
+                  <span class="honor-tag honor-tag--gold">一等奖学金</span>
+                  <span class="honor-tag honor-tag--volunteer">优秀志愿者</span>
+                  <span class="honor-tag honor-tag--party">优秀党员</span>
+                </div>
+              </article>
+
+              <article class="honor-card honor-card--english">
+                <div class="honor-card__header">
+                  <span class="honor-card__icon honor-card__icon--english">📚</span>
+                  <h3 class="honor-card__title">英语能力</h3>
+                </div>
+                <div class="english-certificates">
+                  <div class="english-cert">
+                    <div class="english-cert__badge">CET-6</div>
+                    <div class="english-cert__score">505</div>
+                    <a class="grade-download" href="source/six.jpg" download="英语六级成绩单.jpg">
+                      <span class="grade-download__icon"></span>
+                      <span>下载证书</span>
+                    </a>
+                  </div>
+                  <div class="english-cert english-cert--highlight">
+                    <div class="english-cert__badge">IELTS</div>
+                    <div class="english-cert__score">7.0</div>
+                    <a class="grade-download" href="source/IELTS.pdf" download="雅思成绩单.pdf">
+                      <span class="grade-download__icon"></span>
+                      <span>下载证书</span>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="honors-column honors-column--right">
+              <article class="honor-card honor-card--skills">
+                <div class="honor-card__header">
+                  <span class="honor-card__icon honor-card__icon--skills">⚡</span>
+                  <h3 class="honor-card__title">技能速览</h3>
+                </div>
+                <div class="skills-categories">
+                  <div class="skills-category">
+                    <h4 class="skills-category__title">编程语言</h4>
+                    <div class="skills-tags">
+                      <span class="skill-tag">Python</span>
+                      <span class="skill-tag">Java</span>
+                      <span class="skill-tag">SQL</span>
+                      <span class="skill-tag">JavaScript</span>
+                    </div>
+                  </div>
+                  <div class="skills-category">
+                    <h4 class="skills-category__title">AI工具</h4>
+                    <div class="skills-tags">
+                      <span class="skill-tag">Cursor</span>
+                      <span class="skill-tag">Codex</span>
+                      <span class="skill-tag">Coze</span>
+                      <span class="skill-tag">Claude Code</span>
+                    </div>
+                  </div>
+                  <div class="skills-category">
+                    <h4 class="skills-category__title">工程/工具</h4>
+                    <div class="skills-tags">
+                      <span class="skill-tag">Postman</span>
+                      <span class="skill-tag">Git</span>
+                      <span class="skill-tag">Jira</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="honor-card honor-card--hobbies">
+                <div class="honor-card__header">
+                  <span class="honor-card__icon honor-card__icon--hobbies">🎯</span>
+                  <h3 class="honor-card__title">兴趣爱好</h3>
+                </div>
+                <div class="hobbies-grid">
+                  <span class="hobby-item">🏊 游泳</span>
+                  <span class="hobby-item">🏸 羽毛球</span>
+                  <span class="hobby-item">🏎️ F1</span>
+                  <span class="hobby-item">📺 美剧</span>
+                  <span class="hobby-item">🎮 游戏</span>
+                  <span class="hobby-item">📚 阅读</span>
+                </div>
+              </article>
+
+              <article class="honor-card honor-card--self">
+                <div class="honor-card__header">
+                  <span class="honor-card__icon honor-card__icon--self">💡</span>
+                  <h3 class="honor-card__title">自我评价</h3>
+                </div>
+                <div class="self-content">
+                  <p class="self-text">
+                    工科背景 + 管理能力，擅长系统分析与问题拆解。具有良好的团队协作精神和沟通能力，能够在压力下高效完成任务。
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="job-modal" data-job-modal aria-hidden="true">
+      <div class="job-modal__backdrop" data-close-job-modal></div>
+      <section class="job-modal__panel" role="dialog" aria-modal="true" aria-labelledby="jobModalTitle">
+        <button class="job-modal__close" type="button" data-close-job-modal aria-label="关闭弹窗">×</button>
+        <span class="job-modal__pixel-heart" aria-hidden="true"></span>
+        <h2 id="jobModalTitle">岗位匹配测试</h2>
+        <p>输入你想测试的职位和公司，我会帮你进入更具体的匹配分析。</p>
+        <form class="job-modal__form" data-job-form>
+          <label>
+            <span>目标职位</span>
+            <input type="text" name="position" placeholder="例如：产品经理" autocomplete="organization-title" required />
+          </label>
+          <label>
+            <span>公司名称</span>
+            <input type="text" name="company" placeholder="例如：字节跳动" autocomplete="organization" required />
+          </label>
+          <div class="job-modal__loading" data-job-loading aria-live="polite" aria-hidden="true">
+            <span class="job-modal__loader" aria-hidden="true"></span>
+            <span>模型正在生成岗位匹配报告，请稍候...</span>
+          </div>
+          <button class="job-modal__submit" type="submit">确认开始</button>
+        </form>
+      </section>
+    </div>
+    <script>
+      const profileCard = document.querySelector(".profile-card");
+      const profilePage = document.querySelector(".profile-page");
+
+      if (profileCard) {
+        setTimeout(() => {
+          profileCard.classList.add("is-loaded");
+        }, 200);
+      }
+
+      if (profileCard) {
+        profileCard.addEventListener("mouseenter", () => {
+          profileCard.classList.add("is-hovering");
+        });
+
+        profileCard.addEventListener("mouseleave", () => {
+          profileCard.classList.remove("is-hovering");
+          if (profileCard.classList.contains("tilt-active")) {
+            profileCard.classList.remove("tilt-active");
+            profileCard.style.transform = "";
+          }
+        });
+
+        profileCard.addEventListener("mousemove", (e) => {
+          if (!profileCard.classList.contains("is-hovering")) return;
+
+          const rect = profileCard.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+
+          const rotateX = (y - centerY) * 0.02;
+          const rotateY = (centerX - x) * 0.02;
+
+          profileCard.classList.add("tilt-active");
+          profileCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03) translateY(-8px)`;
+        });
+      }
+
+      const infoPanel = document.querySelector(".info-panel");
+
+      if (infoPanel) {
+        setTimeout(() => {
+          infoPanel.classList.add("is-loaded");
+        }, 400);
+
+        infoPanel.addEventListener("mouseenter", () => {
+          infoPanel.classList.add("is-hovering");
+        });
+
+        infoPanel.addEventListener("mouseleave", () => {
+          infoPanel.classList.remove("is-hovering");
+          if (infoPanel.classList.contains("tilt-active")) {
+            infoPanel.classList.remove("tilt-active");
+            infoPanel.style.transform = "";
+          }
+        });
+
+        infoPanel.addEventListener("mousemove", (e) => {
+          if (!infoPanel.classList.contains("is-hovering")) return;
+
+          const rect = infoPanel.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+
+          const rotateX = (y - centerY) * 0.02;
+          const rotateY = (centerX - x) * 0.02;
+
+          infoPanel.classList.add("tilt-active");
+          infoPanel.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03) translateY(-8px)`;
+        });
+      }
+
+      const tags = document.querySelectorAll(".profile-tags span");
+      tags.forEach((tag) => {
+        tag.addEventListener("mouseenter", () => {
+          tags.forEach((t) => (t.style.opacity = "0.7"));
+          tag.style.opacity = "1";
+        });
+
+        tag.addEventListener("mouseleave", () => {
+          tags.forEach((t) => (t.style.opacity = "1"));
+        });
+      });
+
+      const music = document.querySelector("#bgMusic");
+      const musicToggle = document.querySelector("#musicToggle");
+
+      music.volume = 0.35;
+      music.play().catch(() => {
+        musicToggle.setAttribute("aria-label", "播放背景音乐");
+      });
+
+      musicToggle.addEventListener("click", async () => {
+        if (music.paused) {
+          await music.play();
+          musicToggle.classList.add("is-playing");
+          musicToggle.setAttribute("aria-label", "暂停背景音乐");
+        } else {
+          music.pause();
+          musicToggle.classList.remove("is-playing");
+          musicToggle.setAttribute("aria-label", "播放背景音乐");
+        }
+      });
+
+      const jobModal = document.querySelector("[data-job-modal]");
+      const openJobModal = document.querySelector("[data-open-job-modal]");
+      const closeJobModalButtons = document.querySelectorAll("[data-close-job-modal]");
+      const jobForm = document.querySelector("[data-job-form]");
+      const jobLoading = document.querySelector("[data-job-loading]");
+      const openJobTest = () => {
+        jobModal.classList.add("is-open");
+        jobModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+        jobModal.querySelector("input")?.focus();
+      };
+      const closeJobTest = () => {
+        jobModal.classList.remove("is-open");
+        jobModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+        openJobModal?.focus();
+      };
+
+      openJobModal?.addEventListener("click", openJobTest);
+      closeJobModalButtons.forEach((button) => button.addEventListener("click", closeJobTest));
+      jobModal?.addEventListener("click", (event) => {
+        if (event.target === jobModal) {
+          closeJobTest();
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && jobModal?.classList.contains("is-open")) {
+          closeJobTest();
+        }
+      });
+      jobForm?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(jobForm);
+        const position = formData.get("position")?.toString().trim();
+        const company = formData.get("company")?.toString().trim();
+        if (!position || !company) {
+          return;
+        }
+
+        const submitBtn = jobForm.querySelector("button[type='submit']");
+        jobLoading?.classList.add("is-visible");
+        jobLoading?.setAttribute("aria-hidden", "false");
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = "报告生成中...";
+        }
+
+        try {
+          const resp = await fetch("/api/job-report", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ position, company }),
+          });
+          const data = await resp.json();
+          if (!resp.ok) {
+            throw new Error(data.error || "报告生成失败");
+          }
+          sessionStorage.setItem("job_report_payload", JSON.stringify(data));
+          closeJobTest();
+          window.location.href = "/report";
+        } catch (err) {
+          alert(`生成报告失败：${err.message}`);
+        } finally {
+          jobLoading?.classList.remove("is-visible");
+          jobLoading?.setAttribute("aria-hidden", "true");
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "确认开始";
+          }
+        }
+      });
+
+      const mbtiCards = document.querySelectorAll(".trait-card.mbti-card");
+      mbtiCards.forEach((card) => {
+        const activate = () => {
+          const alreadyActive = card.classList.contains("is-active");
+          mbtiCards.forEach((item) => {
+            item.classList.remove("is-active");
+            item.setAttribute("aria-pressed", "false");
+          });
+          if (!alreadyActive) {
+            card.classList.add("is-active");
+            card.setAttribute("aria-pressed", "true");
+          }
+        };
+
+        card.setAttribute("role", "button");
+        card.setAttribute("aria-pressed", "false");
+
+        card.addEventListener("click", activate);
+        card.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            activate();
+          }
+        });
+      });
+
+      const projectData = {
+        1: {
+          title: "某企业电机产品销售合同管理信息系统设计与实现",
+          badge: "2022.10-2023.06",
+          type: "企业项目",
+          background: "开发了一套B/S架构的销售合同管理系统。覆盖合同起草、审批、存储、变更的全生命周期。",
+          role: "项目参与人，参与系统整体架构设计与功能模块划分，完成系统前后端开发。",
+          content: "项目基于前后端分离架构开发，后端采用 Spring Boot 框架，结合 MyBatis-Plus 实现数据库操作，集成 JWT 实现用户认证与权限控制。前端基于 Vue 2.0 技术栈，使用 Element UI 构建响应式界面。",
+          tags: ["Spring Boot", "Vue 2.0", "MyBatis-Plus", "JWT"]
+        },
+        2: {
+          title: "YOLOv5目标检测训练工具开发",
+          badge: "2024.10-2024.12",
+          type: "个人项目",
+          background: "为降低普通用户训练深度学习模型的门槛，设计并开发一款可视化训练工具。",
+          role: "项目参与人，完成该工具的全流程开发，并编写使用说明书。",
+          content: "使用 PyTorch+YOLOv5 搭建目标检测训练框架，实现数据集加载、类别管理、训练参数配置等核心功能；前端界面采用 PyQt5/PySide6 构建，具备良好交互体验；集成 OllamaAPI 与 DeepSeek，实现AI助手对话功能；通过 TensorBoard 展示训练过程的动态可视化，监控训练过程。",
+          tags: ["PyTorch", "YOLOv5", "PyQt5", "TensorBoard"]
+        },
+        3: {
+          title: "基于MMpose的人员异常检测算法设计",
+          badge: "2025.03-2025.08",
+          type: "科研项目",
+          background: "为提升实验室安全管理水平，开发一套基于人体姿态识别的智能监控系统，用于实时检测人员异常行为。",
+          role: "项目参与人，视觉算法开发人员，负责数据集构建与标注，模型训练和设计几何规则实现异常检测。",
+          content: "分成六类异常动作，进行数据集采集和标注，使用MMPose提取人体姿态的关键骨骼点，获得每帧的骨骼点序列特征，基于这些特征训练LSTM时序分类模型。在推理阶段，结合几何规则判断与 LSTM 模型输出，显著提升了模型在异常行为识别中的准确性。",
+          tags: ["MMPose", "LSTM", "PyTorch", "姿态识别"]
+        },
+        4: {
+          title: "面向对抗过程的视频摘要与图像描述方法研究",
+          badge: "2025.07-至今",
+          type: "科研项目",
+          background: "该方法面向智慧文旅，可用于自动生成运动场景的关键帧与图像描述内容，提升游客体验。",
+          role: "项目负责人，负责整体算法设计、各模块的实现。",
+          content: "单人场景下，基于动作分类和光流法计算运动强度筛选视频摘要；多人场景下，融合遮挡检测、眨眼检测和图像清晰度检测多个维度生成视频摘要。进一步基于人体局部模糊区域定位，利用DeblurMasterv2去除模糊。在此基础上，将视频摘要与辅助信息作为输入，基于Coze平台搭建自动生成图文结合HTML报告的工作流。",
+          tags: ["光流法", "DeblurMaster", "Coze", "视频摘要"]
+        },
+        5: {
+          title: "基于Coze工作流的智能简历生成工具",
+          badge: "2025.03-2025.04",
+          type: "个人项目",
+          background: "在求职过程中，候选人常因不同岗位频繁修改简历，面临多段经历难以差异化突出、排版调整效率低、新增经历后历史版本维护成本高等痛点，因此需要一款智能简历管理工具。",
+          role: "项目负责人，负责整体工作流的搭建。",
+          content: "基于Coze低代码平台，设计并实现了一套自动化简历生成工作流，并将其封装为智能体应用。该工作流支持PDF、Word、纯文本等多格式输入及证件照上传，通过文档转换器将文件统一转为文本，经合并节点整合后，先后调用两个大模型节点：第一个对原始简历进行专业化优化、结构强化与岗位匹配度提升，第二个将优化后的文本转换为结构美观的HTML简历代码，再通过Html2url节点生成可在线预览与打印的链接，最终输出给用户，实现了一键生成在线简历的自动化流程。",
+          tags: ["Coze", "LLM", "HTML", "工作流"]
+        }
+      };
+
+      const modal = document.getElementById("projectModal");
+      const expandButtons = document.querySelectorAll(".project-card__expand");
+      const closeButtons = document.querySelectorAll("[data-modal-close]");
+
+      expandButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const projectId = btn.getAttribute("data-project-id");
+          const data = projectData[projectId];
+          
+          if (data) {
+            document.getElementById("modalBadge").textContent = data.badge;
+            document.getElementById("modalType").textContent = data.type;
+            document.getElementById("modalTitle").textContent = data.title;
+            document.getElementById("modalBackground").textContent = data.background;
+            document.getElementById("modalRole").textContent = data.role;
+            document.getElementById("modalContent").textContent = data.content;
+            
+            const tagsContainer = document.getElementById("modalTags");
+            tagsContainer.innerHTML = data.tags.map(tag => `<span>${tag}</span>`).join("");
+            
+            modal.classList.add("is-open");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+          }
+        });
+      });
+
+      closeButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          modal.classList.remove("is-open");
+          modal.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+        });
+      });
+
+      const animatedPages = document.querySelectorAll(".campus-page, .projects-page, .internship-page, .honors-page");
+      if ("IntersectionObserver" in window) {
+        const pageObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              entry.target.classList.toggle("is-active", entry.isIntersecting);
+            });
+          },
+          {
+            root: document.querySelector(".snap-pages"),
+            threshold: 0.58,
+          },
+        );
+
+        animatedPages.forEach((page) => pageObserver.observe(page));
+      } else {
+        animatedPages.forEach((page) => page.classList.add("is-active"));
+      }
+
+      (function () {
+        const canvas = document.getElementById('campusPetals');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const PX = 4;
+
+        function resize() {
+          canvas.width = Math.floor(canvas.offsetWidth / PX);
+          canvas.height = Math.floor(canvas.offsetHeight / PX);
+        }
+
+        const W = () => canvas.width;
+        const H = () => canvas.height;
+
+        const COLORS = [
+          '#d8b4fe','#c084fc','#a855f7','#9333ea',
+          '#e9d5ff','#f3e8ff','#7c3aed','#ddd6fe','#ede9fe'
+        ];
+
+        function drawPx(x, y, color, alpha) {
+          ctx.globalAlpha = alpha || 1;
+          ctx.fillStyle = color;
+          const PIXEL_SIZE = 3;
+          ctx.fillRect(Math.floor(x), Math.floor(y), PIXEL_SIZE, PIXEL_SIZE);
+          ctx.globalAlpha = 1;
+        }
+
+        function drawPetal(cx, cy, color, rot) {
+          const cos = Math.cos(rot), sin = Math.sin(rot);
+          [[0,0],[1,0],[2,0],[3,0],[1,-1],[2,-1],[0,1],[1,1]].forEach(([x, y]) => {
+            const rx = Math.round(x*cos - y*sin);
+            const ry = Math.round(x*sin + y*cos);
+            drawPx(cx+rx, cy+ry, color, 0.85);
+          });
+        }
+
+        class Petal {
+          constructor(init) { this.reset(init); }
+          reset(init) {
+            this.x = Math.random() * W();
+            this.y = init ? Math.random() * H() : -6;
+            this.vy = 0.04 + Math.random() * 0.07;
+            this.vx = (Math.random() - 0.5) * 0.06;
+            this.rot = Math.floor(Math.random() * 8) * (Math.PI / 4);
+            this.rotSpeed = (Math.random() < 0.5 ? 1 : -1) * (Math.PI / 8);
+            this.rotTimer = 0;
+            this.rotInterval = 35 + Math.floor(Math.random() * 50);
+            this.swayPhase = Math.random() * Math.PI * 2;
+            this.swaySpeed = 0.012 + Math.random() * 0.015;
+            this.swayAmp = 0.04 + Math.random() * 0.08;
+            this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+          }
+          update() {
+            this.swayPhase += this.swaySpeed;
+            this.x += this.vx + Math.sin(this.swayPhase) * this.swayAmp;
+            this.y += this.vy;
+            this.rotTimer++;
+            if (this.rotTimer >= this.rotInterval) { this.rot += this.rotSpeed; this.rotTimer = 0; }
+            if (this.y > H() + 6) this.reset(false);
+          }
+          draw() {
+            drawPetal(Math.round(this.x), Math.round(this.y), this.color, this.rot);
+          }
+        }
+
+        let petals = [], animId = null;
+
+        function init() {
+          resize();
+          petals = Array.from({ length: 40 }, () => new Petal(true));
+        }
+
+        function loop() {
+          ctx.clearRect(0, 0, W(), H());
+          petals.forEach(p => { p.update(); p.draw(); });
+          animId = requestAnimationFrame(loop);
+        }
+
+        new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting) { if (!animId) { init(); loop(); } }
+          else { cancelAnimationFrame(animId); animId = null; }
+        }, { threshold: 0.1 }).observe(document.getElementById('campus'));
+
+        window.addEventListener('resize', resize);
+      })();
+
+      (function () {
+        const canvas = document.getElementById('internshipStars');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+
+        function resize() {
+          canvas.width = Math.floor(canvas.offsetWidth / 3);
+          canvas.height = Math.floor(canvas.offsetHeight / 3);
+        }
+
+        const W = () => canvas.width;
+        const H = () => canvas.height;
+
+        const STAR_COLORS = ['#ffd2e5', '#cdb7ff', '#94d7ff', '#ffe38b', '#fff'];
+
+        class Star {
+          constructor() { this.reset(); }
+          reset() {
+            this.x = Math.random() * W();
+            this.y = Math.random() * H();
+            this.size = 1 + Math.floor(Math.random() * 2);
+            this.color = STAR_COLORS[Math.floor(Math.random() * STAR_COLORS.length)];
+            this.alpha = 0.3 + Math.random() * 0.5;
+            this.alphaDir = Math.random() < 0.5 ? 1 : -1;
+            this.alphaSpeed = 0.008 + Math.random() * 0.012;
+            this.twinkleInterval = 15 + Math.floor(Math.random() * 30);
+            this.frame = 0;
+          }
+          update() {
+            this.frame++;
+            if (this.frame % this.twinkleInterval === 0) {
+              this.alpha += this.alphaSpeed * this.alphaDir;
+              if (this.alpha > 0.85) { this.alpha = 0.85; this.alphaDir = -1; }
+              if (this.alpha < 0.2) { this.alpha = 0.2; this.alphaDir = 1; }
+            }
+          }
+          draw() {
+            ctx.globalAlpha = this.alpha;
+            ctx.fillStyle = this.color;
+            ctx.fillRect(Math.floor(this.x), Math.floor(this.y), this.size, this.size);
+            ctx.globalAlpha = 1;
+          }
+        }
+
+        let stars = [], animId = null;
+
+        function init() {
+          resize();
+          stars = Array.from({ length: 50 }, () => new Star());
+        }
+
+        function loop() {
+          ctx.clearRect(0, 0, W(), H());
+          stars.forEach(s => { s.update(); s.draw(); });
+          animId = requestAnimationFrame(loop);
+        }
+
+        new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting) { if (!animId) { init(); loop(); } }
+          else { cancelAnimationFrame(animId); animId = null; }
+        }, { threshold: 0.1 }).observe(document.getElementById('internship'));
+
+        window.addEventListener('resize', resize);
+      })();
+
+      (function() {
+        const container = document.getElementById('flowerContainer');
+        if (!container) return;
+        
+        const ROWS = 5;
+        const COLS = 8;
+        const SIZE = 35;
+        
+        for (let row = 0; row < ROWS; row++) {
+          for (let col = 0; col < COLS; col++) {
+            const flower = document.createElement('div');
+            flower.className = 'flower-item';
+            
+            flower.style.width = `${SIZE}px`;
+            flower.style.height = `${SIZE}px`;
+            
+            const x = ((col + 0.5) / COLS) * 100;
+            const y = ((row + 0.5) / ROWS) * 100;
+            flower.style.left = `${x}%`;
+            flower.style.top = `${y}%`;
+            
+            flower.style.animationDelay = `${(row * COLS + col) * 0.2}s`;
+            flower.style.animationDuration = `${2.5 + Math.random() * 1.5}s`;
+            
+            container.appendChild(flower);
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

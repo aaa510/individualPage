@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<style>
+  .head {
+    position: relative;
+    width: 120px;
+    height: 130px;
+    margin: 50px auto;
+  }
+
+  .face {
+    position: absolute;
+    top: 35px;
+    left: 20px;
+    width: 80px;
+    height: 78px;
+    background: #ffe0c7;
+    border: 6px solid #2c2c2c;
+    border-radius: 50% 50% 48% 48%;
+    box-shadow: inset 0 8px 0 rgba(255,255,255,0.4);
+    z-index: 2;
+  }
+
+  /* 更蓬松可爱的头发 */
+  .hair {
+    position: absolute;
+    z-index: 1;
+    background: #6b4e8a;
+    border-radius: 50%;
+  }
+
+  .hair-left {
+    top: 12px;
+    left: 12px;
+    width: 68px;
+    height: 48px;
+    box-shadow:
+      8px 8px 0 #6b4e8a,
+      -4px 14px 0 #6b4e8a,
+      20px 18px 0 #6b4e8a;
+  }
+
+  .hair-right {
+    top: 15px;
+    right: 12px;
+    width: 48px;
+    height: 42px;
+    box-shadow:
+      -12px 12px 0 #6b4e8a,
+      4px 18px 0 #6b4e8a;
+  }
+
+  /* 大大的水汪汪眼睛 */
+  .eye {
+    position: absolute;
+    top: 52px;
+    width: 14px;
+    height: 18px;
+    background: #2c2c2c;
+    border-radius: 50%;
+    z-index: 3;
+  }
+
+  .eye-left  { left: 28px; }
+  .eye-right { right: 28px; }
+
+  /* 眼睛高光（更灵动） */
+  .eye::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    width: 5px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50%;
+  }
+
+  /* 加大加粉的腮红 */
+  .blush {
+    position: absolute;
+    top: 68px;
+    width: 18px;
+    height: 10px;
+    background: #ff9eb7;
+    border-radius: 50%;
+    opacity: 0.75;
+    z-index: 3;
+  }
+
+  .blush-left  { left: 20px; }
+  .blush-right { right: 20px; }
+
+  /* 可爱小微笑 + 嘴角上扬 */
+  .smile {
+    position: absolute;
+    bottom: 26px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 26px;
+    height: 12px;
+    border-bottom: 4px solid #2c2c2c;
+    border-radius: 0 0 50% 50%;
+    z-index: 3;
+  }
+</style>
+</head>
+<body>
+
+<div class="head">
+  <div class="hair hair-left"></div>
+  <div class="hair hair-right"></div>
+
+  <div class="face"></div>
+
+  <div class="eye eye-left"></div>
+  <div class="eye eye-right"></div>
+
+  <div class="blush blush-left"></div>
+  <div class="blush blush-right"></div>
+
+  <div class="smile"></div>
+</div>
+
+</body>
+</html>

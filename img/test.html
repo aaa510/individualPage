@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可爱像素云</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            /* 柔和天空渐变背景 */
+            background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%);
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        .cloud-wrapper {
+            text-align: center;
+        }
+        svg {
+            width: 256px;
+            height: 192px;
+            /* 🔑 核心：放大时保持像素边缘清晰，不模糊 */
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            -ms-interpolation-mode: nearest-neighbor;
+            /* 可爱漂浮动画 */
+            animation: float 3s ease-in-out infinite;
+        }
+        .label {
+            margin-top: 20px;
+            color: #5a5a5a;
+            font-size: 14px;
+            letter-spacing: 4px;
+            opacity: 0.7;
+            font-weight: 500;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="cloud-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 24" width="256" height="192" shape-rendering="crispEdges">
+            <defs>
+                <style>
+                    .white { fill: #FFFFFF; }
+                    .blue  { fill: #A0D8EF; }
+                    .black { fill: #4A4A4A; }
+                    .pink  { fill: #FFB6C1; }
+                </style>
+            </defs>
+            <!-- ☁️ 云朵主体 -->
+            <rect x="13" y="3" width="6" height="2" class="white"/>
+            <rect x="11" y="5" width="10" height="2" class="white"/>
+            <rect x="9" y="7" width="14" height="2" class="white"/>
+            <rect x="7" y="9" width="18" height="2" class="white"/>
+            <rect x="5" y="11" width="22" height="4" class="white"/>
+            <rect x="7" y="15" width="18" height="2" class="white"/>
+            <rect x="9" y="17" width="14" height="2" class="white"/>
+            <rect x="11" y="19" width="10" height="2" class="white"/>
+            <rect x="13" y="21" width="6" height="2" class="white"/>
+
+            <!-- 🌫️ 底部阴影 (增加立体感) -->
+            <rect x="7" y="13" width="4" height="2" class="blue"/>
+            <rect x="21" y="13" width="4" height="2" class="blue"/>
+            <rect x="9" y="15" width="2" height="2" class="blue"/>
+            <rect x="21" y="15" width="2" height="2" class="blue"/>
+
+            <!-- 😊 可爱表情 -->
+            <rect x="13" y="12" width="2" height="2" class="black"/>
+            <rect x="17" y="12" width="2" height="2" class="black"/>
+            <rect x="10" y="13" width="2" height="2" class="pink"/>
+            <rect x="20" y="13" width="2" height="2" class="pink"/>
+            <rect x="15" y="14" width="2" height="2" class="black"/>
+        </svg>
+        <div class="label">PIXEL CLOUD</div>
+    </div>
+</body>
+</html>

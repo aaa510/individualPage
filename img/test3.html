@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>像素风 - 紫蓝色樱花图案</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none; /* 避免拖动/选中画布内容，提升像素感 */
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #0a0f1e 0%, #0e1a2a 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', 'Fira Code', monospace;
+            padding: 20px;
+        }
+
+        .pixel-card {
+            background: rgba(10, 20, 30, 0.6);
+            backdrop-filter: blur(2px);
+            border-radius: 32px;
+            padding: 24px 20px 20px 20px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(100, 150, 200, 0.3);
+        }
+
+        canvas {
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 0 4px #1e2a3a, 0 0 0 8px #0f1722;
+            border-radius: 12px;
+            image-rendering: crisp-edges;      /* 像素风格强化 */
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+        canvas:active {
+            transform: scale(0.98);
+        }
+
+        .info {
+            text-align: center;
+            margin-top: 20px;
+            color: #bbd9ff;
+            text-shadow: 0 2px 3px #00000040;
+            font-size: 14px;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+        .info span {
+            background: #0e1a28c9;
+            padding: 6px 14px;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+            font-weight: bold;
+            border: 1px solid #4f6f8f;
+            font-size: 13px;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .badge::before {
+            content: "🌸";
+            font-size: 16px;
+            filter: drop-shadow(0 1px 1px #000);
+        }
+        @media (max-width: 550px) {
+            .pixel-card {
+                padding: 16px 12px 12px 12px;
+            }
+            .info span {
+                padding: 4px 10px;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="pixel-card">
+    <canvas id="pixelSakuraCanvas" width="400" height="400" style="width:400px; height:400px;"></canvas>
+    <div class="info">
+        <span>✨ 像素樱花 · 紫蓝梦境 ✨</span>
+        <span class="badge">🌸 8-bit 幻想风</span>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ---------- 像素画板 ----------
+        const canvas = document.getElementById('pixelSakuraCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // 画布尺寸固定 400x400 每个像素块就是真正的物理像素块 (大像素风格)
+        // 为了强烈像素感，我们采用“块状绘制”：每一个大格子 = 8x8 或者 4x4？这里用统一像素块大小 8px
+        // 但为了让图案更精细且保持鲜明像素感，采用 4px 单位块？
+        // 决定：使用像素块尺寸 = 4px ，这样 400/4 = 100x100 的网格，足够让樱花细节可爱又像素硬朗。
+        const BLOCK_SIZE = 4;       // 每个像素块边长4px，总网格100x100
+        const GRID_W = canvas.width / BLOCK_SIZE;   // 100
+        const GRID_H = canvas.height / BLOCK_SIZE;  // 100
+
+        // 定义一个画板二维数组 (存储颜色代码)
+        let grid = Array(GRID_H).fill().map(() => Array(GRID_W).fill('#000000')); // 初始黑色背景
+
+        // ---------------- 紫蓝主色调 ----------------
+        // 定义多种紫蓝色系 + 樱花粉紫渐变 (但整体突出紫色+蓝色，保留樱花的感觉)
+        // 颜色都采用饱和偏低但明快复古像素感
+        const colors = {
+            // 背景色 — 深邃星空夜蓝紫
+            bg_dark: '#0a0f1c',
+            bg_mid: '#121b2f',
+
+            // 主要花瓣色 (紫罗兰 + 淡紫 + 淡蓝)
+            petal_dark_purple: '#5f4b8b',   // 深紫罗兰
+            petal_mid_purple: '#8a6bbf',   // 紫罗兰
+            petal_lavender: '#b79cf0',      // 薰衣草浅紫
+            petal_blue_lilac: '#6c8fd9',    // 蓝紫色 (粉蓝紫)
+            petal_icy_blue: '#98b2e6',      // 冰蓝紫
+
+            // 花心/点缀色 (淡黄+青蓝)
+            stamen_yellow: '#f5e56b',
+            stamen_cyan: '#6ed4ff',
+            // 高光/细节点
+            glow_purple: '#d3bdff',
+            shadow_navy: '#2c2f5a',
+        };
+
+        // ========= 1. 绘制樱花形状函数 (像素网格绘制) =========
+        // 我们采用直接操作 grid 数组的方法，然后统一渲染
+        // 因为樱花图案是对称/中心图案，因此在画布中心 (50,50) 坐标网格处绘制一朵大型像素樱花+几朵小花。
+
+        // 辅助函数: 绘制圆形/椭圆近似 (像素风)
+        function setPixel(col, row, color) {
+            if (col >= 0 && col < GRID_W && row >= 0 && row < GRID_H) {
+                grid[row][col] = color;
+            }
+        }
+
+        // 绘制实心圆 (Bresenham风格的像素圆，大块填充，更像素感)
+        function fillCircle(cx, cy, radius, color) {
+            // 半径基于网格单位
+            let rad = Math.floor(radius);
+            for (let y = -rad; y <= rad; y++) {
+                for (let x = -rad; x <= rad; x++) {
+                    if (x*x + y*y <= rad*rad + 0.5) {
+                        setPixel(cx + x, cy + y, color);
+                    }
+                }
+            }
+        }
+
+        // 绘制椭圆（简单近似）让花瓣形状更柔和但保持像素
+        function fillEllipse(cx, cy, rx, ry, color) {
+            let rxInt = Math.floor(rx);
+            let ryInt = Math.floor(ry);
+            for (let dy = -ryInt; dy <= ryInt; dy++) {
+                for (let dx = -rxInt; dx <= rxInt; dx++) {
+                    // 椭圆公式
+                    if ((dx*dx) / (rxInt*rxInt) + (dy*dy) / (ryInt*ryInt) <= 1.0) {
+                        setPixel(cx + dx, cy + dy, color);
+                    }
+                }
+            }
+        }
+
+        // 绘制花瓣(单瓣 - 类似樱花椭圆旋转，但用简单偏移椭圆组合)
+        // 参数: 中心坐标, 偏移角度弧度, 半径长, 半径短, 颜色
+        function drawPetal(cx, cy, angle, rx, ry, color) {
+            // 对每个偏移，我们通过旋转矩阵采样。由于网格小，我们暴力映射周边椭圆区域旋转
+            let cosA = Math.cos(angle);
+            let sinA = Math.sin(angle);
+            let rxInt = Math.floor(rx);
+            let ryInt = Math.floor(ry);
+            for (let dy = -ryInt; dy <= ryInt; dy++) {
+                for (let dx = -rxInt; dx <= rxInt; dx++) {
+                    // 局部坐标旋转回去
+                    let localX = dx * cosA + dy * sinA;
+                    let localY = dy * cosA - dx * sinA;
+                    if ((localX*localX) / (rxInt*rxInt) + (localY*localY) / (ryInt*ryInt) <= 1.0) {
+                        setPixel(cx + dx, cy + dy, color);
+                    }
+                }
+            }
+        }
+
+        // 绘制标准5瓣樱花 (像素风)
+        function drawSakura(centerX, centerY, sizeScale = 1.0, mainColor, secondColor, highlightColor) {
+            // sizeScale: 整体缩放 (针对网格单位)
+            let petalLen = 9 * sizeScale;     // 花瓣长半径
+            let petalWid = 5.5 * sizeScale;   // 花瓣短半径
+            let angles = [0, 72, 144, 216, 288].map(deg => deg * Math.PI / 180);
+            // 主花瓣使用主色+渐变效果通过不同层次来增加立体感
+            for (let i = 0; i < angles.length; i++) {
+                let angleRad = angles[i];
+                let petalCenterX = centerX + Math.cos(angleRad) * (petalLen * 0.65);
+                let petalCenterY = centerY + Math.sin(angleRad) * (petalLen * 0.65);
+                // 绘制花瓣 (椭圆)
+                drawPetal(Math.round(petalCenterX), Math.round(petalCenterY), angleRad, petalLen, petalWid, mainColor);
+                // 给每个花瓣加内侧淡色内芯
+                let innerRX = petalLen * 0.55;
+                let innerRY = petalWid * 0.7;
+                drawPetal(Math.round(petalCenterX), Math.round(petalCenterY), angleRad, innerRX, innerRY, secondColor);
+            }
+            // 花蕊区域 (中心圆)
+            fillCircle(centerX, centerY, 3.8 * sizeScale, highlightColor);
+            fillCircle(centerX, centerY, 2.2 * sizeScale, colors.stamen_yellow);
+            // 花蕊点状细节 (像素小点)
+            for (let rad = 0; rad < 2 * Math.PI; rad += Math.PI/4) {
+                let rx = centerX + Math.cos(rad) * 3.2 * sizeScale;
+                let ry = centerY + Math.sin(rad) * 3.2 * sizeScale;
+                setPixel(Math.round(rx), Math.round(ry), colors.stamen_cyan);
+            }
+            // 增加花瓣边缘高亮像素
+            for (let i = 0; i < angles.length; i++) {
+                let angleRad = angles[i];
+                let tipX = centerX + Math.cos(angleRad) * (petalLen * 1.05);
+                let tipY = centerY + Math.sin(angleRad) * (petalLen * 1.05);
+                setPixel(Math.round(tipX), Math.round(tipY), colors.glow_purple);
+                setPixel(Math.round(tipX)-1, Math.round(tipY), colors.glow_purple);
+            }
+        }
+
+        // 绘制另一种风格: 蓝紫色渐变樱花 (偏蓝)
+        function drawBluePurpleSakura(centerX, centerY, sizeScale = 0.9, baseColor, mixColor) {
+            let petalLen = 10 * sizeScale;
+            let petalWid = 6 * sizeScale;
+            let angles = [0, 72, 144, 216, 288].map(deg => deg * Math.PI / 180);
+            for (let i = 0; i < angles.length; i++) {
+                let angleRad = angles[i];
+                let petalCenterX = centerX + Math.cos(angleRad) * (petalLen * 0.7);
+                let petalCenterY = centerY + Math.sin(angleRad) * (petalLen * 0.7);
+                // 外瓣深色
+                drawPetal(Math.round(petalCenterX), Math.round(petalCenterY), angleRad, petalLen, petalWid, baseColor);
+                // 内部渐变浅
+                drawPetal(Math.round(petalCenterX), Math.round(petalCenterY), angleRad, petalLen*0.65, petalWid*0.75, mixColor);
+            }
+            fillCircle(centerX, centerY, 4.5 * sizeScale, colors.petal_blue_lilac);
+            fillCircle(centerX, centerY, 2.5 * sizeScale, '#c5f0ff');
+            fillCircle(centerX, centerY, 1.8 * sizeScale, colors.stamen_yellow);
+            for (let rad = 0; rad < 2*Math.PI; rad += Math.PI/3) {
+                let rx = centerX + Math.cos(rad) * 3.0 * sizeScale;
+                let ry = centerY + Math.sin(rad) * 3.0 * sizeScale;
+                setPixel(Math.round(rx), Math.round(ry), '#aaf0ff');
+            }
+        }
+
+        // 整体生成像素画: 主体+落花+氛围光点
+        function buildSakuraPattern() {
+            // 1. 背景: 深邃的紫蓝渐变风格 (像素网格填充)
+            for (let row = 0; row < GRID_H; row++) {
+                for (let col = 0; col < GRID_W; col++) {
+                    // 模拟夜空渐变 (上深下亮)
+                    let t = row / GRID_H;
+                    let rBlend = 0x0a + (0x12 - 0x0a) * t;
+                    let gBlend = 0x0f + (0x28 - 0x0f) * t;
+                    let bBlend = 0x1c + (0x3a - 0x1c) * t;
+                    let bgColor = `rgb(${Math.floor(rBlend)}, ${Math.floor(gBlend)}, ${Math.floor(bBlend)})`;
+                    grid[row][col] = bgColor;
+                }
+            }
+
+            // 额外添加星尘/光晕背景(随机像素点)
+            for (let i = 0; i < 280; i++) {
+                let randX = Math.floor(Math.random() * GRID_W);
+                let randY = Math.floor(Math.random() * GRID_H);
+                if (Math.random() > 0.7) {
+                    let starColor = `rgba(170, 190, 255, ${0.3 + Math.random() * 0.5})`;
+                    grid[randY][randX] = starColor;
+                } else if (Math.random() > 0.85) {
+                    grid[randY][randX] = '#b3a9ff';
+                }
+            }
+
+            // 主樱花树冠的位置: 中心主花 + 周边花簇
+            // 主樱花 (正中央 偏下一点更艺术)
+            let centerX = GRID_W / 2;   // 50
+            let centerY = GRID_H / 2 + 4; // 54左右，视觉中心
+
+            // 大型主樱花1 (紫罗兰主色调)
+            drawSakura(centerX, centerY, 1.15, colors.petal_dark_purple, colors.petal_lavender, colors.petal_icy_blue);
+            // 叠加一层亮紫增强层次
+            drawSakura(centerX, centerY, 0.95, colors.petal_mid_purple, colors.petal_blue_lilac, colors.glow_purple);
+
+            // 左上侧 蓝紫色樱花
+            drawBluePurpleSakura(centerX - 18, centerY - 16, 0.9, colors.petal_blue_lilac, colors.petal_icy_blue);
+            drawBluePurpleSakura(centerX + 19, centerY - 18, 0.85, '#6f8ed6', '#9cbef5');
+            // 右下侧小花
+            drawSakura(centerX + 22, centerY + 12, 0.75, '#8a6bbf', '#bda2f0', '#cbafff');
+            drawSakura(centerX - 21, centerY + 15, 0.8, '#7b5faf', '#a48bdf', '#bb9eff');
+
+            // 顶部飘散花瓣 (小型樱花碎片)
+            drawBluePurpleSakura(centerX - 30, centerY - 28, 0.65, colors.petal_lavender, colors.petal_icy_blue);
+            drawSakura(centerX + 32, centerY - 30, 0.68, '#b19aff', '#d7c2ff', '#ebdcff');
+            drawSakura(centerX - 8, centerY - 35, 0.55, '#7b9eff', '#b0c6ff', '#d3e5ff');
+            drawBluePurpleSakura(centerX + 10, centerY - 40, 0.6, '#859ed9', '#b1c5fc');
+            drawSakura(centerX + 38, centerY + 5, 0.7, '#9f85cf', '#c9b3f5', '#ecdcff');
+            drawSakura(centerX - 36, centerY + 8, 0.72, '#5c74b3', '#8dabec', '#c2d4ff');
+
+            // 悬浮小花瓣: 简单的像素小花瓣 (短椭圆)
+            function tinyPetal(cx, cy, angle, color) {
+                for (let dx = -2; dx <= 2; dx++) {
+                    for (let dy = -1; dy <= 1; dy++) {
+                        if (Math.abs(dx) + Math.abs(dy) <= 2) {
+                            setPixel(cx + dx, cy + dy, color);
+                        }
+                    }
+                }
+                // 一个点高光
+                setPixel(cx + 1, cy, color);
+                setPixel(cx - 1, cy, color);
+            }
+            // 散落小花瓣 (动态位置)
+            let petalsPos = [
+                [22, 68], [29, 55], [18, 48], [43, 71], [60, 38], [33, 75], [69, 42], [74, 51],
+                [15, 74], [10, 38], [72, 65], [55, 82], [45, 85], [80, 30], [70, 18], [26, 13],
+                [40, 10], [62, 12], [85, 45], [8, 55], [5, 70], [90, 72], [92, 48], [48, 89],
+            ];
+            for (let [x, y] of petalsPos) {
+                if (x < GRID_W && y < GRID_H) {
+                    let colorPick = [colors.petal_lavender, colors.petal_blue_lilac, '#a58ad9', '#88a5e0'][Math.floor(Math.random() * 4)];
+                    tinyPetal(x, y, 0, colorPick);
+                    setPixel(x+1, y-1, colors.glow_purple);
+                }
+            }
+
+            // 增加额外紫蓝色渐变飘带感: 一些小圆点星星
+            for (let i = 0; i < 130; i++) {
+                let x = Math.floor(Math.random() * GRID_W);
+                let y = Math.floor(Math.random() * GRID_H);
+                if (grid[y][x] === colors.bg_dark || grid[y][x] === colors.bg_mid || grid[y][x].startsWith('rgb')) {
+                    if (Math.random() > 0.85) {
+                        let lightColor = [colors.petal_icy_blue, colors.petal_lavender, '#cfb5ff', '#7ca2e6'][Math.floor(Math.random()*4)];
+                        grid[y][x] = lightColor;
+                    }
+                }
+            }
+
+            // 在主樱花周围添加微光点 (提升像素闪耀感)
+            for (let ang = 0; ang < 360; ang += 18) {
+                let rad = ang * Math.PI/180;
+                let px = centerX + Math.cos(rad) * 27;
+                let py = centerY + Math.sin(rad) * 24;
+                let ix = Math.round(px), iy = Math.round(py);
+                if (ix >= 0 && ix < GRID_W && iy >=0 && iy < GRID_H) {
+                    if (Math.random() > 0.6) grid[iy][ix] = colors.glow_purple;
+                }
+            }
+
+            // 增加树枝线条（像素简单的曲线增加生动感）
+            function drawPixelLine(x0, y0, x1, y1, color) {
+                let dx = Math.abs(x1 - x0), dy = Math.abs(y1 - y0);
+                let sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1;
+                let err = dx - dy;
+                let x = x0, y = y0;
+                while(true) {
+                    if (x >= 0 && x < GRID_W && y >= 0 && y < GRID_H) grid[y][x] = color;
+                    if (x === x1 && y === y1) break;
+                    let e2 = 2 * err;
+                    if (e2 > -dy) { err -= dy; x += sx; }
+                    if (e2 < dx) { err += dx; y += sy; }
+                }
+            }
+            // 暗紫色像素树枝
+            drawPixelLine(38, 65, 48, 50, '#3a3468');
+            drawPixelLine(48, 50, 53, 45, '#423b78');
+            drawPixelLine(53, 45, 60, 40, '#2e2a5a');
+            drawPixelLine(60, 40, 68, 36, '#36306b');
+            drawPixelLine(38, 65, 32, 68, '#3b3570');
+            drawPixelLine(65, 58, 58, 50, '#404079');
+            drawPixelLine(24, 64, 38, 58, '#2b295c');
+
+            // 额外润色: 樱花中心高光蓝点
+            fillCircle(centerX-1, centerY-1, 1.2, '#e4f0ff');
+            fillCircle(centerX+2, centerY+1, 1, '#fff6c0');
+            setPixel(centerX+1, centerY-2, '#ffffff');
+
+            // 左上方蓝紫色樱花增加冷光
+            fillCircle(centerX - 18, centerY - 17, 1.8, '#abdeff');
+            fillCircle(centerX + 19, centerY - 19, 1.5, '#ccf0ff');
+
+            // 最终修正部分超出边界颜色 (确保边缘干净)
+            for (let y = 0; y < GRID_H; y++) {
+                for (let x = 0; x < GRID_W; x++) {
+                    if (grid[y][x] === undefined) grid[y][x] = colors.bg_dark;
+                }
+            }
+        }
+
+        // 渲染像素网格到canvas上
+        function renderCanvas() {
+            for (let row = 0; row < GRID_H; row++) {
+                for (let col = 0; col < GRID_W; col++) {
+                    let color = grid[row][col];
+                    ctx.fillStyle = color;
+                    ctx.fillRect(col * BLOCK_SIZE, row * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+                }
+            }
+        }
+
+        // 初始化生成图案并渲染
+        function init() {
+            buildSakuraPattern();
+            renderCanvas();
+        }
+
+        init();
+
+        // 可选: 右键或点击重新生成微调（保留原风格重新随机飘落点）
+        canvas.addEventListener('click', () => {
+            // 重新生成背景和花朵 (但是保持核心构图, 随机星尘再飘浮一点)
+            buildSakuraPattern();
+            renderCanvas();
+            // 短暂动画反馈
+            canvas.style.transform = 'scale(0.99)';
+            setTimeout(() => { canvas.style.transform = ''; }, 100);
+        });
+
+        // 提示用户可以点击刷新“花瓣氛围”
+        console.log('Pixel Sakura 紫蓝梦境 🌸 点击画面可感受新的星尘飘落');
+    })();
+</script>
+</body>
+</html>
